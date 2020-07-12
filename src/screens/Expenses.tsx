@@ -3,14 +3,16 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Portal, FAB } from 'react-native-paper';
+import { useSelector } from 'react-redux'
 
-import expenses from '../../data/expenses'
 import ExpenseList from '../components/ExpenseList/ExpenseList'
 import { Expense } from '../models/expense.model'
+import { AppState } from '../reducers'
 
 const Expenses: React.FunctionComponent = () => {
   const isFocused = useIsFocused()
   const navigation = useNavigation()
+  const expensesStore = useSelector((state: AppState) => state.expenses)
   
   const onExpenseItemPressedFactory = React.useCallback((item: Expense) => () => {
     navigation.navigate('ExpenseDetails', {
@@ -25,7 +27,9 @@ const Expenses: React.FunctionComponent = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ExpenseList expenses={expenses} onPress={onExpenseItemPressedFactory} />
+      {expensesStore.items && expensesStore.items.length > 0 &&
+        <ExpenseList expenses={expensesStore.items} onPress={onExpenseItemPressedFactory} />
+      }
       <Portal>
         <FAB
           visible={isFocused}
