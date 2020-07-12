@@ -17,3 +17,19 @@ Tech stacks:
 - redux-saga
 - react-native-paper
 - sqlite
+
+## Development Guide
+
+- Install NodeJS if you don't have it yet: https://nodejs.org/en/
+- Install Expo CLI
+```
+> npm install expo-cli --global
+```
+- Install project dependencies
+```
+> npm install
+```
+- Start the project
+```
+> expo start
+```
