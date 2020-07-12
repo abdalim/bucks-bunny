@@ -36,7 +36,7 @@ export default function App() {
             <Stack.Screen
               name="ExpenseDetails"
               component={ExpenseDetailsScreen}
-              options={({ route }) => ({ title: `Expense ${route.params.id} Details` })}
+              options={{ title: 'Expense Details' }}
             />
             <Stack.Screen
               name="ExpenseForm"

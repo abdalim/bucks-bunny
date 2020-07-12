@@ -76,6 +76,7 @@ export default function ExpenseForm () {
             onBlur={handleBlur('item')}
             value={values.item}
             error={Boolean(errors.item && touched.item)}
+            disabled={expenseStore.isRequesting}
           />
           <TextInput
             mode="outlined"
@@ -87,12 +88,14 @@ export default function ExpenseForm () {
             onBlur={handleBlur('price')}
             value={values.price}
             error={Boolean(errors.price && touched.price)}
+            disabled={expenseStore.isRequesting}
           />
           <Button
             mode="contained"
             contentStyle={{ padding: 8 }}
             onPress={handleSubmit}
             disabled={!dirty || !isValid || expenseStore.isRequesting}
+            loading={expenseStore.isRequesting}
           >
             {isCreate ? 'Add' : 'Update'}
           </Button>
