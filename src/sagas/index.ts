@@ -1,9 +1,11 @@
 import { all, fork} from 'redux-saga/effects';
 
-import { fetchExpenses } from './expenses.saga';
+import { watchNewExpense } from './expense.saga';
+import { watchGetAllExpenses } from './expenses.saga';
 
 export function* rootSaga () {
   yield all([
-    fork(fetchExpenses),
+    fork(watchNewExpense),
+    fork(watchGetAllExpenses),
   ]);
 };

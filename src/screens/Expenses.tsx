@@ -1,10 +1,11 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { useIsFocused, useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Portal, FAB } from 'react-native-paper';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { requestExpenses } from '../actions/expenses.action'
 import ExpenseList from '../components/ExpenseList/ExpenseList'
 import { Expense } from '../models/expense.model'
 import { AppState } from '../reducers'
@@ -13,6 +14,7 @@ const Expenses: React.FunctionComponent = () => {
   const isFocused = useIsFocused()
   const navigation = useNavigation()
   const expensesStore = useSelector((state: AppState) => state.expenses)
+  const dispatch = useDispatch()
   
   const onExpenseItemPressedFactory = React.useCallback((item: Expense) => () => {
     navigation.navigate('ExpenseDetails', {
@@ -23,6 +25,13 @@ const Expenses: React.FunctionComponent = () => {
   const onAddExpensePressed = React.useCallback(() => {
     navigation.navigate('ExpenseForm', { isCreate: true })
   }, [])
+
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('navigated to Expenses page')
+      dispatch(requestExpenses())
+    }, [])
+  )
 
   return (
     <View style={styles.container}>

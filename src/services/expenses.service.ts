@@ -1,10 +1,26 @@
-import dummyExpenses from '../../data/expenses'
+/**
+ * Fake Expenses Service, calls a DB instead of a remote API service
+ */
+
+import * as expensesDB from '../db/expenses.db'
+import { Expense } from '../models/expense.model'
 
 export const getAll = () => {
-  // fake an API call
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      return resolve(dummyExpenses)
-    }, 1000)
+  return new Promise((resolve) => {
+    expensesDB.getAll()
+      .then((expenses: Expense[]) => {
+        resolve(expenses.map(expense => {
+          return {
+            ...expense,
+            price: expense.price / 100
+          }
+        }))
+      })
+  })
+}
+
+export const add = (expense: expensesDB.NewExpense) => {
+  return new Promise((resolve) => {
+    expensesDB.add(expense).then(insertedId => resolve(Boolean(insertedId)))
   })
 }

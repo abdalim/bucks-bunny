@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider as ReduxProvider } from 'react-redux';
 
+import { initTable } from './src/db/expenses.db'
 import ExpenseDetailsScreen from './src/screens/ExpenseDetails';
 import ExpenseFormScreen from './src/screens/ExpenseForm';
 import ExpensesScreen from './src/screens/Expenses';
@@ -18,6 +19,11 @@ export type RootStackParamList = {
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
+
+  React.useEffect(() => {
+    initTable()
+  }, [])
+
   return (
     <PaperProvider>
       <ReduxProvider store={store}>
