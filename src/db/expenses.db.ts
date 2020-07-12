@@ -4,9 +4,9 @@ import { Expense } from '../models/expense.model'
 
 const db = SQLite.openDatabase('db.expenses')
 
-const TABLE = 'expense'
+const TABLE = 'expensev4'
 
-export type NewExpense = Omit<Expense, 'id'>
+export type NewExpense = Omit<Expense, 'id' | 'createdAt' | 'updatedAt'>
 
 export const initTable = () => {
   db.transaction(tx => {
