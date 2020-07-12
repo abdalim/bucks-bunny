@@ -42,7 +42,15 @@
     "@types/redux-logger": "^3.0.8",
     "@types/redux-saga": "^0.10.5",
     "@types/yup": "^0.29.3",
+    "husky": "^4.2.5",
+    "prettier": "2.0.5",
+    "pretty-quick": "^2.0.1",
     "typescript": "~3.9.5"
   },
-  "private": true
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }
