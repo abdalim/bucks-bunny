@@ -5,11 +5,13 @@
 Simple expense tracker RN app
 
 Features:
+
 - View list of expenses
 - Add an expense
 - View expense details
 
 Tech stacks:
+
 - React Native
 - Expo
 - react-navigation
@@ -22,14 +24,19 @@ Tech stacks:
 
 - Install NodeJS if you don't have it yet: https://nodejs.org/en/
 - Install Expo CLI
+
 ```
 > npm install expo-cli --global
 ```
+
 - Install project dependencies
+
 ```
 > npm install
 ```
+
 - Start the project
+
 ```
 > expo start
 ```

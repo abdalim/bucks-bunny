@@ -7,11 +7,11 @@ export default [
   {
     id: 2,
     item: 'RON95 Fuel',
-    price: 78.90,
+    price: 78.9,
   },
   {
     id: 3,
     item: 'Toll',
-    price: 5.50,
+    price: 5.5,
   },
 ]

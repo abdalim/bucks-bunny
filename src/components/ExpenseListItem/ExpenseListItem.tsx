@@ -1,10 +1,6 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native';
-import {
-  Surface,
-  Title,
-  TouchableRipple,
-} from 'react-native-paper';
+import { StyleSheet, View } from 'react-native'
+import { Surface, Title, TouchableRipple } from 'react-native-paper'
 
 import { Expense } from '../../models/expense.model'
 

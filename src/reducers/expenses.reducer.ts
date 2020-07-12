@@ -5,7 +5,7 @@ import { Expense } from '../models/expense.model'
 
 export type ExpensesState = {
   items?: Expense[]
-  error?: Error,
+  error?: Error
   isFetching: boolean
   lastFetchedAt?: number
 }
@@ -17,7 +17,10 @@ const initialState = {
   lastFetchedAt: undefined,
 }
 
-const expensesReducer = (state: ExpensesState = initialState, action: AnyAction) => {
+const expensesReducer = (
+  state: ExpensesState = initialState,
+  action: AnyAction
+) => {
   switch (action.type) {
     case ExpensesAction.FetchListRequest:
     case ExpensesAction.FetchListSuccessful:

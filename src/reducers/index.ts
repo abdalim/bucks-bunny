@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import expenseReducer, { ExpenseState } from './expense.reducer';
-import expensesReducer, { ExpensesState } from './expenses.reducer';
+import expenseReducer, { ExpenseState } from './expense.reducer'
+import expensesReducer, { ExpensesState } from './expenses.reducer'
 
 export type AppState = {
   expense: ExpenseState
@@ -11,6 +11,6 @@ export type AppState = {
 const rootReducer = combineReducers({
   expense: expenseReducer,
   expenses: expensesReducer,
-});
+})
 
 export default rootReducer

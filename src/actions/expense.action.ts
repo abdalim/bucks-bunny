@@ -16,7 +16,7 @@ export const clearForm = () => {
       expense: undefined,
       error: undefined,
       isRequesting: false,
-    }
+    },
   }
 }
 
@@ -34,7 +34,7 @@ export const requestNewExpense = () => {
       expense: undefined,
       error: undefined,
       isRequesting: true,
-    }
+    },
   }
 }
 
@@ -45,6 +45,6 @@ export const addedNewExpense = (expense: Expense) => {
       expense,
       error: undefined,
       isRequesting: false,
-    }
+    },
   }
 }

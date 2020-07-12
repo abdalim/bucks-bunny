@@ -1,17 +1,20 @@
 import { useFocusEffect, useRoute, RouteProp } from '@react-navigation/native'
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { DataTable, Text } from 'react-native-paper';
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { DataTable, Text } from 'react-native-paper'
 import { useSelector } from 'react-redux'
 
 import { RootStackParamList } from '../../App'
 import { Expense } from '../models/expense.model'
 import { AppState } from '../reducers'
 
-type ExpenseDetailsScreenRouteProp = RouteProp<RootStackParamList, 'ExpenseDetails'>
+type ExpenseDetailsScreenRouteProp = RouteProp<
+  RootStackParamList,
+  'ExpenseDetails'
+>
 
-export default function ExpenseDetails () {
+export default function ExpenseDetails() {
   const route = useRoute<ExpenseDetailsScreenRouteProp>()
   const expensesStore = useSelector((state: AppState) => state.expenses)
 
@@ -20,7 +23,7 @@ export default function ExpenseDetails () {
   useFocusEffect(
     React.useCallback(() => {
       const expenseId = route.params.id
-      setExpense(expensesStore.items?.find(item => item.id === expenseId))
+      setExpense(expensesStore.items?.find((item) => item.id === expenseId))
     }, [])
   )
 
@@ -28,13 +31,10 @@ export default function ExpenseDetails () {
     ? { ...styles.container }
     : { ...styles.container, ...styles.centerContainer }
 
-
   return (
     <View style={containerStyles}>
       <StatusBar style="auto" />
-      {!expense && (
-        <Text>Expense does not exists</Text>
-      )}
+      {!expense && <Text>Expense does not exists</Text>}
       {expense && (
         <DataTable>
           <DataTable.Row>
@@ -52,7 +52,7 @@ export default function ExpenseDetails () {
         </DataTable>
       )}
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -63,5 +63,5 @@ const styles = StyleSheet.create({
   centerContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  }
-});
+  },
+})

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import React from 'react'
-import { SectionList, View, StyleSheet, Text } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { SectionList, View, StyleSheet, Text } from 'react-native'
+import { useTheme } from 'react-native-paper'
 
 import ExpenseListItem from '../ExpenseListItem/ExpenseListItem'
 import { Expense } from '../../models/expense.model'
@@ -16,11 +16,11 @@ const getSectionData = (expenses: Expense[]) => {
       currDate = currSpendDate
       acc.push({
         title: currSpendDate,
-        data: [currExpense]
+        data: [currExpense],
       })
       return acc
     } else {
-      acc[acc.length-1].data.push(currExpense)
+      acc[acc.length - 1].data.push(currExpense)
       return acc
     }
   }, [])
@@ -36,10 +36,10 @@ const ExpenseList: React.FunctionComponent<{
     return <ExpenseListItem expense={item} onPress={props.onPress(item)} />
   }, [])
 
-  const renderSectionHeader = React.useCallback(({ section: { title }}) => {
+  const renderSectionHeader = React.useCallback(({ section: { title } }) => {
     return (
       <View style={styles.sectionHeader}>
-        <Text>{ title }</Text>
+        <Text>{title}</Text>
       </View>
     )
   }, [])
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 })
 
 export default ExpenseList

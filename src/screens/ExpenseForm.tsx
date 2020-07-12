@@ -1,9 +1,9 @@
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar'
 import { Formik } from 'formik'
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { Button, TextInput } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
@@ -14,7 +14,7 @@ import { AppState } from '../reducers'
 
 type ExpenseFormScreenRouteProp = RouteProp<RootStackParamList, 'ExpenseForm'>
 
-export default function ExpenseForm () {
+export default function ExpenseForm() {
   const dispatch = useDispatch()
   const expenseStore = useSelector((state: AppState) => state.expense)
   const navigation = useNavigation()
@@ -25,7 +25,7 @@ export default function ExpenseForm () {
   const onSubmitButtonPressed = React.useCallback((values) => {
     const newExpense: NewExpense = {
       item: values.item,
-      price: Math.round(parseFloat(values.price) * 100)
+      price: Math.round(parseFloat(values.price) * 100),
     }
     console.log('onSubmitButtonPressed', { values, newExpense })
     dispatch(addNewExpense(newExpense))
@@ -63,7 +63,7 @@ export default function ExpenseForm () {
         touched,
         dirty,
         isValid,
-        values
+        values,
       }) => (
         <View style={styles.container}>
           <StatusBar style="auto" />
@@ -102,7 +102,7 @@ export default function ExpenseForm () {
         </View>
       )}
     </Formik>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -114,4 +114,4 @@ const styles = StyleSheet.create({
   input: {
     marginBottom: 16,
   },
-});
+})

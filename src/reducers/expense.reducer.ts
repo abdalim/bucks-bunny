@@ -15,7 +15,10 @@ const initialState = {
   isRequesting: false,
 }
 
-const expenseReducer = (state: ExpenseState = initialState, action: AnyAction) => {
+const expenseReducer = (
+  state: ExpenseState = initialState,
+  action: AnyAction
+) => {
   switch (action.type) {
     case ExpenseAction.AddExpenseRequest:
     case ExpenseAction.AddExpenseSuccessful:

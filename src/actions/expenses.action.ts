@@ -12,7 +12,7 @@ export const requestExpenses = () => {
     payload: {
       error: undefined,
       isFetching: true,
-    }
+    },
   }
 }
 
@@ -24,6 +24,6 @@ export const receivedExpenses = (expenses: Expense[]) => {
       error: undefined,
       isFetching: false,
       lastFetchedAt: new Date().getTime(),
-    }
+    },
   }
 }
