@@ -1,4 +1,4 @@
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
+import { useRoute, RouteProp } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { Formik } from 'formik'
 import React from 'react'
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
 import { RootStackParamList } from '../../App'
-import { addNewExpense, clearForm } from '../actions/expense.action'
+import { addNewExpense } from '../actions/expense.action'
 import { NewExpense } from '../db/expenses.db'
 import { AppState } from '../reducers'
 
@@ -17,7 +17,6 @@ type ExpenseFormScreenRouteProp = RouteProp<RootStackParamList, 'ExpenseForm'>
 export default function ExpenseForm() {
   const dispatch = useDispatch()
   const expenseStore = useSelector((state: AppState) => state.expense)
-  const navigation = useNavigation()
   const route = useRoute<ExpenseFormScreenRouteProp>()
 
   const isCreate = route.params.isCreate
@@ -30,14 +29,6 @@ export default function ExpenseForm() {
     console.log('onSubmitButtonPressed', { values, newExpense })
     dispatch(addNewExpense(newExpense))
   }, [])
-
-  // redirect to expenses page once successful
-  React.useEffect(() => {
-    if (expenseStore.expense) {
-      navigation.navigate('Expenses')
-      dispatch(clearForm())
-    }
-  }, [expenseStore])
 
   const initialValues = {
     item: '',

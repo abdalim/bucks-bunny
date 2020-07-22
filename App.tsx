@@ -8,6 +8,7 @@ import { initTable } from './src/db/expenses.db'
 import ExpenseDetailsScreen from './src/screens/ExpenseDetails'
 import ExpenseFormScreen from './src/screens/ExpenseForm'
 import ExpensesScreen from './src/screens/Expenses'
+import { navigationRef } from './src/services/navigation.service'
 import { store } from './src/store'
 
 export type RootStackParamList = {
@@ -26,7 +27,7 @@ export default function App() {
   return (
     <PaperProvider>
       <ReduxProvider store={store}>
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
           <Stack.Navigator initialRouteName="Expenses">
             <Stack.Screen name="Expenses" component={ExpensesScreen} />
             <Stack.Screen
