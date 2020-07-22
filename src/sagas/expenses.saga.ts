@@ -14,3 +14,7 @@ export function* watchGetAllExpenses() {
     yield call(fetchExpenses)
   }
 }
+
+export function* getAllExpenses() {
+  yield call(fetchExpenses)
+}
